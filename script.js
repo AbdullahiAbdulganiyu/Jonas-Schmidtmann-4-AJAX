@@ -23,3 +23,12 @@ request.addEventListener('load', function () {
   const data = JSON.parse(this.responseText);
   console.log(data);
 });
+
+const request2 = new XMLHttpRequest();
+request2.open('GET', 'https://restcountries.com/v2/name/nigeria');
+request2.send();
+
+request2.addEventListener('load', function () {
+  const [data2] = JSON.parse(this.responseText);
+  console.log(data2);
+});
