@@ -12,3 +12,14 @@ const countriesContainer = document.querySelector('.countries');
 // https://countries-api-836d.onrender.com/countries/
 
 ///////////////////////////////////////
+
+// old way of wrting AJAX
+const request = new XMLHttpRequest();
+request.open('GET', 'https://restcountries.com/v2/name/portugal');
+request.send();
+
+request.addEventListener('load', function () {
+  //  converting the data form JSON to javascript object
+  const data = JSON.parse(this.responseText);
+  console.log(data);
+});
