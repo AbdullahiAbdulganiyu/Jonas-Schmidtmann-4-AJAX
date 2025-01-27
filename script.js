@@ -119,3 +119,13 @@ getCountryAndNeighbour('portugal');
 
 const request = fetch('https://restcountries.com/v2/name/portugal');
 console.log(request);
+
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`).then(function (
+    response
+  ) {
+    console.log(response);
+  });
+};
+
+getCountryData('portugal');
