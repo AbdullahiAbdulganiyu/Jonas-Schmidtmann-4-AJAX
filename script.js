@@ -55,6 +55,7 @@ getCountryData('nigeria');
 
 */
 
+/*
 const renderCountry = function (data, className = '') {
   const html = `
         <article class="country${className}">
@@ -111,3 +112,10 @@ const getCountryAndNeighbour = function (country) {
 };
 
 getCountryAndNeighbour('portugal');
+
+*/
+
+// The modern way of writing AJAX call
+
+const request = fetch('https://restcountries.com/v2/name/portugal');
+console.log(request);
