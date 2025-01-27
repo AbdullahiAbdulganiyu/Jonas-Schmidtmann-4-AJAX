@@ -167,12 +167,14 @@ const getCountryData = function (country) {
 // getCountryData('portugal');
 
 const getNeighbouringCountry = function (country) {
+  // country 1
   fetch(`https://restcountries.com/v2/name/${country}`)
     .then(response => response.json())
     .then(data => {
       renderCountry(data[0]);
       const neighbour = data[0].borders?.[0];
 
+      //   country 2
       return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
     })
     .then(response => response.json())
