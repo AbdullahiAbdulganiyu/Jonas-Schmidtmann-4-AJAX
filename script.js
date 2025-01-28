@@ -24,12 +24,12 @@ const renderCountry = function (data, className = '') {
               `;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
+  //   countriesContainer.style.opacity = 1;
 };
 
 const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
-  countriesContainer.style.opacity = 1;
+  //   countriesContainer.style.opacity = 1;
 };
 
 // NEW COUNTRIES API URL (use instead of the URL shown in videos):
@@ -187,7 +187,13 @@ const getNeighbouringCountry = function (country) {
     })
     .then(response => response.json())
     .then(data => renderCountry(data, 'neighbour'))
-    .catch(err => alert(err));
+    .catch(err => {
+      console.log(`${err} 🎆🎆🎆`);
+      renderError(`Something went wrong🎆🎆🎆. ${err.message}. Try again`);
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
+    });
 };
 
 btn.addEventListener('click', function () {
