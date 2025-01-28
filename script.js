@@ -181,4 +181,6 @@ const getNeighbouringCountry = function (country) {
     .then(data => renderCountry(data, 'neighbour'));
 };
 
-getNeighbouringCountry('portugal');
+btn.addEventListener('click', function () {
+  getNeighbouringCountry('portugal');
+});
