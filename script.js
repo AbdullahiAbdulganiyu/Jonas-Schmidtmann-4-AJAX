@@ -175,7 +175,13 @@ const getNeighbouringCountry = function (country) {
   // country 1
   fetch(`https://restcountries.com/v2/name/${country}`)
     .then(
-      response => response.json()
+      response => {
+        console.log(response);
+
+        if (!response.ok)
+          throw new Error(`Country not found (${response.status})`);
+        return response.json();
+      }
       //   err => alert(err)
     )
     .then(data => {
@@ -199,3 +205,5 @@ const getNeighbouringCountry = function (country) {
 btn.addEventListener('click', function () {
   getNeighbouringCountry('portugal');
 });
+
+getNeighbouringCountry('aaaaaaa');
