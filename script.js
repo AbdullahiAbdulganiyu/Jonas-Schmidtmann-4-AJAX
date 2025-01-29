@@ -332,4 +332,10 @@ setTimeout(() => console.log('Timer at 0 seconds'), 0);
 
 Promise.resolve('This is promise 1').then(res => console.log(res));
 
+// prove that when task in the microtask queue perform heavy task the callback in the callback queue are delayed till after their execution
+Promise.resolve('This is promise 2').then(res => {
+  for (let i = 0; i < 1000000000; i++) {}
+  console.log(res);
+});
+
 console.log('Test end');
