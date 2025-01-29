@@ -346,11 +346,14 @@ console.log('Test end');
 // using the new Promise() to create a promise
 
 const lotteryPromise = new Promise(function (resolve, reject) {
-  if (Math.random() >= 0.5) {
-    resolve('You Won 💰');
-  } else {
-    reject('You lost your money 💩');
-  }
+  console.log('Lottery Draw going on');
+  setTimeout(() => {
+    if (Math.random() >= 0.5) {
+      resolve('You Won 💰');
+    } else {
+      reject(new Error('You lost your money 💩'));
+    }
+  }, 2000);
 });
 
 // cosuming the promise
