@@ -324,3 +324,12 @@ btn.addEventListener('click', function () {
 });
 
 */
+
+// Proving that callbacks in the callbacks in the microtask queue execute before callbacks in the callback queue
+console.log('Test start');
+
+setTimeout(() => console.log('Timer at 0 seconds'), 0);
+
+Promise.resolve('This is promise 1').then(res => console.log(res));
+
+console.log('Test end');
