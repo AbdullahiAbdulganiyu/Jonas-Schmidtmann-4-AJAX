@@ -343,6 +343,8 @@ console.log('Test end');
 
 */
 
+/*
+
 // using the new Promise() to create a promise
 
 const lotteryPromise = new Promise(function (resolve, reject) {
@@ -378,3 +380,21 @@ wait(2)
 Promise.resolve('abc').then(x => console.log(x));
 //   creting a promise that throws an error immedietly/ rejects immedietly
 Promise.reject(new Error('Problem!')).catch(err => console.error(err));
+
+*/
+
+// navigator.geolocation.getCurrentPosition(
+//   postion => console.log(postion),
+//   err => console.error(new Error('cant acces your location'))
+// );
+
+// Promisifying the geolocation
+const getPosition = function () {
+  return new Promise((resolve, reject) => {
+    // navigator.geolocation.getCurrentPosition(position => resolve(position), err => reject(err))
+
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+getPosition().then(pos => console.log(pos));
