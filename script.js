@@ -346,7 +346,7 @@ console.log('Test end');
 // using the new Promise() to create a promise
 
 const lotteryPromise = new Promise(function (resolve, reject) {
-  console.log('Lottery Draw going on');
+  console.log('Lottery Draw going on 🔮');
   setTimeout(() => {
     if (Math.random() >= 0.5) {
       resolve('You Won 💰');
