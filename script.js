@@ -397,4 +397,42 @@ const getPosition = function () {
   });
 };
 
-getPosition().then(pos => console.log(pos));
+// getPosition().then(pos => {
+//   //   const { latitude: lat, longitude: lng } = pos.coords;
+//   //   console.log(lat, lng);
+//   console.log(pos);
+// });
+
+const whereAmI = function () {
+  getPosition()
+    .then(postion => {
+      const { latitude: lat, longitude: lng } = postion.coords;
+      const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`;
+
+      return fetch(url);
+    })
+    .then(response => {
+      console.log(response);
+      if (!response.ok) throw new Error('Somethng went wrong');
+      return response.json();
+    })
+    .then(data => {
+      // 3
+      const message = `You are in ${data.city}, ${data.countryName}`;
+      console.log(message);
+      // Part 2
+      return fetch(`https://restcountries.com/v2/name/${data.countryName}`);
+    })
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Something went wrong ${response.status}`);
+      return response.json();
+    })
+    .then(data => renderCountry(data[0]))
+    .catch(err => {
+      // 4
+      console.log(`${err.message}`);
+    });
+};
+
+btn.addEventListener('click', whereAmI);
