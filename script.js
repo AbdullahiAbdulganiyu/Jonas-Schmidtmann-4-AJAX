@@ -358,3 +358,18 @@ const lotteryPromise = new Promise(function (resolve, reject) {
 
 // cosuming the promise
 lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+
+// promisfying setTimeOut
+
+const wait = function (seconds) {
+  return new Promise(resolve => {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+// consuming the promise
+wait(2)
+  .then(() => {
+    console.log('I waited for 2 seconds');
+    return wait(1);
+  })
+  .then(() => console.log('I waited for 1 second'));
