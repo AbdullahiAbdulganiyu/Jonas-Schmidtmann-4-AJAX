@@ -325,6 +325,7 @@ btn.addEventListener('click', function () {
 
 */
 
+/*
 // Proving that callbacks in the callbacks in the microtask queue execute before callbacks in the callback queue
 console.log('Test start');
 
@@ -339,3 +340,18 @@ Promise.resolve('This is promise 2').then(res => {
 });
 
 console.log('Test end');
+
+*/
+
+// using the new Promise() to create a promise
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  if (Math.random() >= 0.5) {
+    resolve('You Won 💰');
+  } else {
+    reject('You lost your money 💩');
+  }
+});
+
+// cosuming the promise
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
