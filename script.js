@@ -373,3 +373,8 @@ wait(2)
     return wait(1);
   })
   .then(() => console.log('I waited for 1 second'));
+
+//   creating a promisse that resolves immedietly
+Promise.resolve('abc').then(x => console.log(x));
+//   creting a promise that throws an error immedietly/ rejects immedietly
+Promise.reject(new Error('Problem!')).catch(err => console.error(err));
