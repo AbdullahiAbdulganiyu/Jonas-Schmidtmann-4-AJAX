@@ -523,7 +523,7 @@ const getPosition2 = function () {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
-const whereAmI = async function (country) {
+const whereAmI = async function () {
   // Geolocation
   const pos = await getPosition2();
   const { latitude: lat, longitude: lng } = pos.coords;
@@ -536,12 +536,14 @@ const whereAmI = async function (country) {
   console.log(dataGeo);
 
   //   Country data
-  const res = await fetch(`https://restcountries.com/v2/name/${country}`);
+  const res = await fetch(
+    `https://restcountries.com/v2/name/${dataGeo.countryName}`
+  );
   console.log(res);
   const data = await res.json();
   console.log(data[0]);
   renderCountry(data[0]);
 };
 
-whereAmI('nigeria');
+whereAmI();
 console.log('First');
