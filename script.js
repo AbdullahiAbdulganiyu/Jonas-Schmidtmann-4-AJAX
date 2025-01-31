@@ -630,6 +630,7 @@ Promise.race([getJSON(`https://restcountries.com/v2/name/italy`), timeout(1)])
 
   */
 
+/*
 //   Promise.allSettled()
 
 Promise.allSettled([
@@ -637,3 +638,15 @@ Promise.allSettled([
   Promise.reject('Error'),
   Promise.resolve('Another success'),
 ]).then(res => console.log(res));
+
+*/
+
+/*
+// Promise.any()
+Promise.any([
+  Promise.resolve('SUccess'),
+  Promise.reject('Error'),
+  Promise.resolve('Another Success'),
+]).then(res => console.log(res));
+
+*/
