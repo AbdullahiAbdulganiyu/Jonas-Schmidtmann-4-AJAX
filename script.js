@@ -615,6 +615,7 @@ get3Countries('portugal', 'nigeria', 'tanzania');
 })();
 */
 
+/*
 const timeout = function (sec) {
   return new Promise(function (_, reject) {
     setTimeout(function () {
@@ -626,3 +627,13 @@ const timeout = function (sec) {
 Promise.race([getJSON(`https://restcountries.com/v2/name/italy`), timeout(1)])
   .then(res => console.log(res[0]))
   .catch(err => console.error(err));
+
+  */
+
+//   Promise.allSettled()
+
+Promise.allSettled([
+  Promise.resolve('Success'),
+  Promise.reject('Error'),
+  Promise.resolve('Another success'),
+]).then(res => console.log(res));
