@@ -670,3 +670,72 @@ TEST DATA: ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']. To test, turn of
 
 GOOD LUCK 😀
 */
+
+// Solution
+
+// Solution
+
+const wait = function (seconds) {
+  return new Promise(resolve => {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+const imageContainer = document.querySelector('.images');
+const createImage = function (imgPath) {
+  return new Promise(function (resolve, reject) {
+    const imageElement = document.createElement('img');
+    // imageElement.setAttribute('src', imgPath);
+    imageElement.src = imgPath;
+
+    imageElement.addEventListener('load', function () {
+      imageContainer.append(imageElement);
+      resolve(imageElement);
+    }),
+      imageElement.addEventListener('error', function () {
+        reject(new Error('Image not found'));
+      });
+  });
+};
+
+let currentImage;
+// createImage('img/img-1.jpg')
+//   .then(imageElement => {
+//     currentImage = imageElement;
+//     console.log('Image 1 loaded');
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImage.style.display = 'none';
+
+//     return createImage('img/img-2.jpg');
+//   })
+//   .then(imageElement => {
+//     currentImage = imageElement;
+//     console.log('Image 2 loaded');
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImage.style.display = 'none';
+//   })
+//   .catch(err => console.error(err));
+
+const loadNPause = async function () {
+  try {
+    // Load image 1
+    let img = await createImage('img/img-1.jpg');
+    console.log('Image 1 Loaded');
+    await wait(2);
+    img.style.display = 'none';
+
+    // Load image 2
+    img = await createImage('img/img-2.jpg');
+    console.log('Image 2 Loaded');
+    await wait(2);
+    img.style.display = 'none';
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+loadNPause();
