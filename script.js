@@ -578,6 +578,8 @@ console.log('1: Will get location');
 })();
 */
 
+/*
+
 const get3Countries = async function (c1, c2, c3) {
   try {
     // const [data1] = await getJSON(`https://restcountries.com/v2/name/${c1}`);
@@ -598,3 +600,15 @@ const get3Countries = async function (c1, c2, c3) {
 };
 
 get3Countries('portugal', 'nigeria', 'tanzania');
+
+*/
+
+// Promise.race()
+(async function () {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.com/v2/name/italy`),
+    getJSON(`https://restcountries.com/v2/name/germany`),
+    getJSON(`https://restcountries.com/v2/name/canada`),
+  ]);
+  console.log(res[0]);
+})();
